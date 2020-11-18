@@ -2,7 +2,6 @@
 Using both Cookie and JWT Authentication
 
 
-# Cookie Authentication
 ## Starup.cs
 ###### ConfigureServices
 ```
