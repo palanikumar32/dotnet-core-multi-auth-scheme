@@ -1,0 +1,31 @@
+﻿@page
+@model IndexModel
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login - Multiple Auth Scheme</title>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+</head>
+<body>
+    <form onsubmit="onSubmit(); return false;">
+        Username:<br />
+        <input id="UserName" type="text" value="demo" /><br /><br />
+        Password:<br />
+        <input id="Password" type="text" value="demo" /><br /><br />
+        <input type="submit" value="Login" />
+    </form>
+    <script type="text/javascript">
+        function onSubmit() {
+            $.post("@Url.Action("Login", "Auth")", { UserName: $("#UserName").val(), Password: $("#Password").val() }, function (res) {
+                if (res.HasError) {
+                    alert(res.Message);
+                    return;
+                }
+                location.href = "@Url.Page("/Home/Dashboard")";
+            });
+        }
+    </script>
+</body>
+</html>

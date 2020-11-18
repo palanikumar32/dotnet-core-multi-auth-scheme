@@ -1,0 +1,13 @@
+﻿@page
+
+
+<h3>Api Call: @Url.Action("Get", "Test")</h3>
+<div id="data"></div>
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function () {
+        $.get("@Url.Action("Get", "Test")", function (res) {
+            $("#data").text(JSON.stringify(res));
+        });
+    });
+</script>
